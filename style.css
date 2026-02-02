@@ -497,3 +497,81 @@ body {
         padding-right: 20px;
     }
 }
+/* GLOBAL MOBILE FIX */
+html, body {
+    overflow-x: hidden; /* Mencegah layar geser kanan-kiri */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 100%;
+    overflow: hidden; /* Menjaga bayangan elemen tidak merusak grid */
+}
+
+/* FIX ROW BOOTSTRAP */
+.row {
+    --bs-gutter-x: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+    /* 1. Homepage Hero Fix */
+    .hero {
+        text-align: center;
+        padding: 120px 0 60px 0;
+    }
+    
+    .hero .d-flex {
+        flex-direction: column; /* Tombol jadi tumpuk di HP */
+        gap: 15px !important;
+    }
+
+    /* 2. Stats Section Fix (Agar 2 kolom per baris) */
+    .stats-section .col-md-3 {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+
+    /* 3. Footer Reset */
+    .neo-footer {
+        text-align: center; /* Paksa teks ke tengah di HP */
+    }
+
+    .footer-brand-box {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+    }
+
+    .social-sticker {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    /* 4. Shadow Adjustment */
+    /* Shadow terlalu tebal bikin elemen melenceng ke kanan */
+    .neo-item, .contact-card, .footer-brand-box, .gallery-item {
+        box-shadow: 5px 5px 0px #000 !important;
+        margin-left: auto;
+        margin-right: auto;
+        transform: none !important; /* Matikan rotasi miring di HP */
+    }
+
+    /* 5. Marquee Fix */
+    .marquee, .marquee-footer {
+        width: 100%;
+    }
+    
+    /* 6. Contact Card & Map */
+    .contact-card {
+        padding: 15px;
+        width: 100%;
+    }
+    
+    iframe {
+        height: 200px;
+    }
+}
