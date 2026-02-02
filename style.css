@@ -1,0 +1,440 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --blue: #0057ff;
+    --pink: #ff007a;
+    --yellow: #f4ff00;
+    --green: #00ff66;
+    --border: 4px solid #000; /* Border lebih tebal agar kontras */
+}
+
+body { 
+    font-family: 'Outfit', sans-serif; 
+    background-color: var(--bg); 
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* MARQUEE EFFECT (Teks Berjalan di bawah Navbar) */
+.marquee {
+    background: var(--text);
+    color: var(--yellow);
+    padding: 10px 0;
+    border-bottom: var(--border);
+    font-weight: 900;
+    text-transform: uppercase;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+/* NAVBAR RE-DESIGN: ULTRA PROMINENT */
+.navbar { 
+    background: var(--yellow) !important; /* Warna kontras paling tinggi */
+    border-bottom: 5px solid var(--text); /* Garis bawah sangat tebal */
+    padding: 15px 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 10000;
+}
+
+/* Membuat Navbar Melayang saat Scroll */
+.navbar.scrolled {
+    margin: 20px auto;
+    width: 95%;
+    border: var(--border); /* Border keliling 4 sisi */
+    box-shadow: 10px 10px 0px var(--text); /* Hard shadow agar terlihat 3D */
+    border-radius: 0px; /* Tetap kotak tajam untuk vibe brutalist */
+    padding: 10px 0;
+}
+
+/* Brand/Logo Styling */
+.navbar-brand { 
+    font-weight: 950; 
+    font-size: 2.2rem; 
+    letter-spacing: -3px; 
+    color: var(--text) !important;
+    text-transform: uppercase;
+    background: var(--bg);
+    padding: 0 15px;
+    border: 3px solid var(--text); /* Logo di dalam kotak */
+}
+
+/* Nav Links as Buttons */
+.nav-link {
+    color: var(--text) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 10px 20px !important;
+    transition: 0.2s;
+    border: 2px solid transparent;
+}
+
+.nav-link:hover {
+    background: var(--text);
+    color: var(--yellow) !important;
+}
+
+/* Tombol Booking di Navbar */
+.nav-item .btn-warning {
+    background: var(--pink) !important;
+    color: white !important;
+    border: 3px solid var(--text) !important;
+    border-radius: 0px !important;
+    box-shadow: 5px 5px 0px var(--text);
+    font-weight: 900;
+}
+
+.nav-item .btn-warning:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--text);
+}
+/* HERO: The Chaos Section */
+.hero {
+    height: 100vh;
+    background: 
+        repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,0.03) 20px, rgba(0,0,0,0.03) 40px),
+        var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 18vw, 12rem);
+    font-weight: 950;
+    line-height: 0.75;
+    letter-spacing: -8px;
+    text-align: center;
+}
+
+/* OUTLINE TEXT EFFECT */
+.text-outline {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--text);
+}
+
+/* BENTO BOX SERVICES: Hover Explode */
+.service-card {
+    background: white;
+    border: var(--border);
+    border-radius: 0;
+    padding: 40px;
+    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: 12px 12px 0px var(--text);
+}
+
+.service-card:hover {
+    transform: translate(-8px, -8px);
+    box-shadow: 20px 20px 0px var(--pink);
+    background: var(--blue);
+    color: white;
+}
+
+.service-card:hover i { color: var(--yellow); }
+
+/* CONTAINER: Base yang solid */
+.gallery-container {
+    padding: 100px 0;
+    background: var(--text); /* Latar hitam pekat */
+    overflow: hidden;
+    perspective: 1000px; /* Memberikan efek 3D */
+}
+
+/* ITEM: Polaroid Style dengan Rotasi Random */
+.gallery-item {
+    border: 3px solid #000;
+    padding: 15px 15px 60px 15px; /* Bagian bawah lebih lebar untuk teks (khas Polaroid) */
+    background: white;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+}
+
+/* Memberikan rotasi acak agar terlihat seperti tumpukan foto asli */
+.col-md-4:nth-child(1) .gallery-item { transform: rotate(-5deg) translateY(10px); }
+.col-md-4:nth-child(2) .gallery-item { transform: rotate(3deg) translateY(-20px); }
+.col-md-4:nth-child(3) .gallery-item { transform: rotate(-2deg) translateY(15px); }
+.col-md-4:nth-child(4) .gallery-item { transform: rotate(4deg) translateY(5px); }
+.col-md-4:nth-child(5) .gallery-item { transform: rotate(-4deg) translateY(-10px); }
+.col-md-4:nth-child(6) .gallery-item { transform: rotate(2deg) translateY(20px); }
+
+/* HOVER: Efek "Diambil dari Tumpukan" */
+.gallery-item:hover {
+    transform: scale(1.15) rotate(0deg) translateY(-10px) !important;
+    z-index: 100;
+    box-shadow: 20px 20px 0px var(--green); /* Shadow warna hijau neon */
+    border-color: var(--green);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    filter: sepia(0.3) contrast(1.1); /* Filter retro tipis */
+    transition: 0.4s;
+}
+
+.gallery-item:hover img {
+    filter: sepia(0) contrast(1);
+}
+
+/* Caption di dalam Polaroid */
+.gallery-overlay {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    right: 20px;
+    background: transparent;
+    color: #000;
+    text-align: left;
+    opacity: 1; /* Selalu muncul */
+}
+
+.gallery-overlay h5 {
+    font-weight: 900;
+    font-family: 'Permanent Marker', cursive; /* Optional: Pakai font tulisan tangan */
+    margin: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+/* PRICING: The "Sticker" Card */
+.package-card {
+    border: var(--border);
+    padding: 40px;
+    background: white;
+    box-shadow: 15px 15px 0px var(--text);
+}
+
+.best-seller {
+    background: var(--yellow);
+    transform: rotate(2deg); /* Miring untuk kesan stiker */
+}
+
+/* WA STICKY: The Ultra-Noticeable */
+.wa-sticky {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 99999;
+    background: var(--green);
+    color: var(--text) !important;
+    border: var(--border);
+    padding: 15px 35px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 10px 10px 0px var(--text);
+}
+
+.wa-sticky:hover {
+    background: var(--pink);
+    color: white !important;
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px var(--text);
+}
+/* NEO-FOOTER STYLE */
+/* CONTAINER MARQUEE */
+.marquee-footer {
+    background: var(--blue);
+    color: white;
+    padding: 20px 0;
+    border-top: var(--border);
+    border-bottom: var(--border);
+    font-weight: 950;
+    text-transform: uppercase;
+    overflow: hidden; /* Sembunyikan teks yang keluar layar */
+    display: flex;
+    white-space: nowrap;
+}
+
+/* ANIMASI GERAK */
+.marquee-footer span {
+    display: inline-block;
+    padding-left: 50px; /* Jarak antar pengulangan teks */
+    animation: marquee-scroll 15s linear infinite;
+    will-change: transform; /* Optimasi performa agar smooth */
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+/* KEYFRAMES: Dari kanan ke kiri */
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Efek Hover: Berhenti saat mouse di atasnya (Opsional) */
+.marquee-footer:hover span {
+    animation-play-state: paused;
+    color: var(--yellow);
+    cursor: pointer;
+}
+.footer-brand-box {
+    background: var(--yellow);
+    padding: 10px 20px;
+    display: inline-block;
+    border: var(--border);
+    box-shadow: 8px 8px 0px #000;
+}
+
+.text-outline-dark {
+    color: transparent;
+    -webkit-text-stroke: 1.5px #000;
+}
+
+.footer-label {
+    display: inline-block;
+    background: var(--pink);
+    color: white;
+    padding: 5px 15px;
+    font-weight: 900;
+    transform: rotate(-2deg);
+    margin-bottom: 25px;
+}
+
+/* Social Media Sticker Style */
+.social-sticker {
+    background: white;
+    border: 3px solid #000;
+    color: #000;
+    padding: 10px 15px;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 4px 4px 0px #000;
+    transition: 0.2s;
+}
+
+.social-sticker:hover {
+    background: var(--blue);
+    color: white;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+/* Bento Gallery in Footer */
+.bento-img {
+    border: 3px solid #000;
+    filter: grayscale(1);
+    transition: 0.3s;
+    object-fit: cover;
+    height: 100px;
+    width: 100%;
+}
+
+.bento-img:hover {
+    filter: grayscale(0);
+    transform: scale(1.05);
+}
+
+.contact-card {
+    background: #f0f0f0;
+    padding: 20px;
+    border: var(--border);
+    box-shadow: 10px 10px 0px var(--text);
+}
+
+.map-wrapper {
+    border: 3px solid #000;
+    margin-top: 15px;
+}
+
+.footer-bottom {
+    background: var(--yellow);
+    border-top: var(--border);
+    padding: 20px 0;
+}
+
+.fw-950 { font-weight: 950; }
+/* Efek Persiapan (Hidden) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Efek Saat Aktif (Muncul) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Animasi Getar untuk Footer Label agar mencuri perhatian */
+@keyframes shake-extreme {
+    0% { transform: rotate(-2deg); }
+    25% { transform: rotate(2deg) scale(1.1); }
+    50% { transform: rotate(-2deg) scale(1.1); }
+    75% { transform: rotate(2deg); }
+    100% { transform: rotate(-2deg); }
+}
+
+.footer-label.animate-shake {
+    animation: shake-extreme 0.5s ease-in-out;
+}
+/* NEO-ACCORDION STYLE */
+.neo-accordion {
+    border: none;
+    background: transparent;
+}
+
+.neo-item {
+    background: white !important;
+    border: 3px solid #000 !important; /* Border tebal */
+    margin-bottom: 20px !important;
+    border-radius: 0 !important; /* Sudut tajam khas brutalist */
+    box-shadow: 10px 10px 0px #000; /* Hard shadow */
+    transition: 0.3s;
+}
+
+.neo-item:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 14px 14px 0px var(--blue); /* Berubah jadi biru saat hover */
+}
+
+/* Accordion Button Customization */
+.neo-btn {
+    background: white !important;
+    color: #000 !important;
+    font-weight: 900 !important;
+    font-size: 1.2rem !important;
+    padding: 25px !important;
+    box-shadow: none !important;
+}
+
+.neo-btn:not(.collapsed) {
+    background: var(--yellow) !important; /* Warna kuning saat terbuka */
+    border-bottom: 3px solid #000;
+}
+
+.faq-number {
+    background: #000;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 15px;
+    font-size: 0.9rem;
+    display: inline-block;
+    transform: rotate(-3deg);
+}
+
+.neo-body {
+    padding: 30px !important;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    background: #fdfdfd;
+}
+
+/* Icon Customization */
+.accordion-button::after {
+    filter: grayscale(1) invert(0);
+    background-size: 1.5rem;
+}
