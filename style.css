@@ -438,3 +438,62 @@ body {
     filter: grayscale(1) invert(0);
     background-size: 1.5rem;
 }
+/* RESPONSIVE FIX FOR SMARTPHONES */
+@media (max-width: 768px) {
+    /* Mencegah layar goyang ke samping */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* Hero Section: Teks jangan terlalu besar di HP */
+    .hero h1 {
+        font-size: 2.8rem !important;
+        line-height: 1.1;
+    }
+
+    /* Navbar: Pastikan tombol booking tidak nabrak logo */
+    .navbar-brand {
+        font-size: 1.5rem !important;
+    }
+
+    /* Footer Marquee: Perkecil teks di HP */
+    .marquee-footer span {
+        font-size: 1rem;
+        padding-left: 20px;
+    }
+
+    /* Gallery: Pastikan tumpukan polaroid tidak keluar layar */
+    .gallery-item {
+        transform: rotate(0deg) !important; /* Matikan rotasi di HP agar simetris */
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    /* Bento Gallery Footer: Paksa jadi 2 kolom yang rapi */
+    .footer-bento .col-6 {
+        width: 50%;
+    }
+    .footer-bento .col-12 {
+        width: 100%;
+    }
+
+    /* FAQ & Cards: Kurangi shadow agar tidak memakan ruang layar */
+    .neo-item, .contact-card, .footer-brand-box {
+        box-shadow: 6px 6px 0px #000 !important; 
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Social Stickers: Biarkan mereka wrap (turun ke bawah) dengan rapi */
+    .social-sticker {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* Padding Container: Jangan terlalu sempit */
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
