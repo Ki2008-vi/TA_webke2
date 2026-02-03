@@ -493,30 +493,55 @@ body {
 .social-sticker-icon:hover .fa-whatsapp { color: #25D366; }
 
 @media (max-width: 768px) {
-    /* 1. Reset Global agar tidak ada scroll kanan-kiri */
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
+    /* NAVBAR: Memastikan konten di tengah */
+    .navbar .container {
+        display: flex;
+        justify-content: center; /* Paksa konten navbar ke tengah */
+        align-items: center;
     }
 
+    /* Memastikan tombol menu dan brand sejajar */
+    .navbar-brand {
+        margin-right: 0 !important;
+        margin-left: auto;
+        margin-right: auto;
+        display: table; /* Trik agar margin auto bekerja pada elemen inline-block */
+    }
     /* 2. Hero Section - Perampingan Teks */
-    .hero {
-        padding: 100px 15px 50px 15px; /* Tambah ruang atas agar tidak tertutup navbar */
-        height: auto;
-        min-height: 80vh;
-        text-align: center;
+   .hero {
+        text-align: center !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center secara horizontal */
+        justify-content: center; /* Center secara vertikal */
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .hero h1 {
-        font-size: 3.5rem !important; /* Ukuran pas untuk layar HP */
-        letter-spacing: -2px;
-        line-height: 1;
-        margin-bottom: 20px;
+        width: 100%;
+        text-align: center !important;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .hero p {
-        font-size: 1.1rem !important; /* Teks deskripsi lebih terbaca */
-        padding: 0 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Tombol Lihat Katalog (D-Flex Button Container) */
+    .hero .d-flex {
+        justify-content: center !important; /* Paksa tombol ke tengah */
+        width: 100%;
+        flex-direction: column; /* Tombol tumpuk di HP agar rapi */
+        gap: 15px !important;
+        align-items: center;
+    }
+
+    .hero .btn {
+        width: 80%; /* Tombol lebih lebar di HP agar mudah diklik */
+        margin: 0 auto;
     }
 
     /* 3. Bento Box (Services) - Jadi 1 Kolom Sempurna */
