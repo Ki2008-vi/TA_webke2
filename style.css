@@ -190,24 +190,47 @@ body {
     filter: sepia(0) contrast(1);
 }
 
-/* Caption di dalam Polaroid */
+/* Overlay Dasar */
 .gallery-overlay {
     position: absolute;
-    bottom: 15px;
-    left: 20px;
-    right: 20px;
-    background: transparent;
-    color: #000;
-    text-align: left;
-    opacity: 1; /* Selalu muncul */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Overlay gelap transparan */
+    display: flex;
+    align-items: center; /* Teks di tengah secara vertikal */
+    justify-content: center; /* Teks di tengah secara horizontal */
+    text-align: center;
+    padding: 20px;
+    opacity: 0; /* Sembunyi sebelum di-hover */
+    transition: all 0.4s ease;
+    backdrop-filter: blur(4px); /* Efek blur kaca agar teks makin jelas */
 }
 
+/* Muncul saat Hover */
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Styling Teks Dalam Gallery */
 .gallery-overlay h5 {
-    font-weight: 900;
-    font-family: 'Permanent Marker', cursive; /* Optional: Pakai font tulisan tangan */
-    margin: 0;
-    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    /* Memberikan bayangan pada teks agar makin kontras */
+    text-shadow: 2px 2px 0px #000; 
+}
+
+.gallery-overlay p {
+    color: var(--yellow); /* Pakai warna terang seperti kuning untuk sub-teks */
+    font-weight: 600;
+    margin: 0;
+    background: #000; /* Background hitam di balik teks kecil */
+    padding: 2px 8px;
+    display: inline-block;
 }
 /* PRICING: The "Sticker" Card */
 .package-card {
@@ -438,140 +461,54 @@ body {
     filter: grayscale(1) invert(0);
     background-size: 1.5rem;
 }
-/* RESPONSIVE FIX FOR SMARTPHONES */
-@media (max-width: 768px) {
-    /* Mencegah layar goyang ke samping */
-    body, html {
-        overflow-x: hidden;
-        width: 100%;
-    }
-
-    /* Hero Section: Teks jangan terlalu besar di HP */
-    .hero h1 {
-        font-size: 2.8rem !important;
-        line-height: 1.1;
-    }
-
-    /* Navbar: Pastikan tombol booking tidak nabrak logo */
-    .navbar-brand {
-        font-size: 1.5rem !important;
-    }
-
-    /* Footer Marquee: Perkecil teks di HP */
-    .marquee-footer span {
-        font-size: 1rem;
-        padding-left: 20px;
-    }
-
-    /* Gallery: Pastikan tumpukan polaroid tidak keluar layar */
-    .gallery-item {
-        transform: rotate(0deg) !important; /* Matikan rotasi di HP agar simetris */
-        margin-bottom: 20px;
-        width: 100%;
-    }
-
-    /* Bento Gallery Footer: Paksa jadi 2 kolom yang rapi */
-    .footer-bento .col-6 {
-        width: 50%;
-    }
-    .footer-bento .col-12 {
-        width: 100%;
-    }
-
-    /* FAQ & Cards: Kurangi shadow agar tidak memakan ruang layar */
-    .neo-item, .contact-card, .footer-brand-box {
-        box-shadow: 6px 6px 0px #000 !important; 
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    /* Social Stickers: Biarkan mereka wrap (turun ke bawah) dengan rapi */
-    .social-sticker {
-        padding: 8px 12px;
-        font-size: 0.8rem;
-    }
-
-    /* Padding Container: Jangan terlalu sempit */
-    .container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-/* GLOBAL MOBILE FIX */
-html, body {
-    overflow-x: hidden; /* Mencegah layar geser kanan-kiri */
-    width: 100%;
-    margin: 0;
-    padding: 0;
+/* SOCIAL STICKER WITH ICON */
+.social-sticker-icon {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 3px solid #000;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Ukuran Icon */
+    text-decoration: none;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
 }
 
-.container {
-    max-width: 100%;
-    overflow: hidden; /* Menjaga bayangan elemen tidak merusak grid */
+.social-sticker-icon:hover {
+    background: var(--yellow); /* Warna kuning khas Vibe Pro saat hover */
+    color: #000;
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px #000;
 }
 
-/* FIX ROW BOOTSTRAP */
-.row {
-    --bs-gutter-x: 1.5rem;
-    margin-right: 0;
-    margin-left: 0;
-}
+/* Warna spesifik saat hover (Optional - biar makin asik) */
+.social-sticker-icon:hover .fa-instagram { color: #E1306C; }
+.social-sticker-icon:hover .fa-youtube { color: #FF0000; }
+.social-sticker-icon:hover .fa-tiktok { color: #00f2ea; }
+.social-sticker-icon:hover .fa-facebook-f { color: #1877F2; }
+.social-sticker-icon:hover .fa-whatsapp { color: #25D366; }
 
 @media (max-width: 768px) {
-    /* 1. Homepage Hero Fix */
-    .hero {
-        text-align: center;
-        padding: 120px 0 60px 0;
+    .social-sticker-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        box-shadow: 4px 4px 0px #000;
     }
-    
-    .hero .d-flex {
-        flex-direction: column; /* Tombol jadi tumpuk di HP */
-        gap: 15px !important;
-    }
-
-    /* 2. Stats Section Fix (Agar 2 kolom per baris) */
-    .stats-section .col-md-3 {
-        width: 50%;
-        margin-bottom: 20px;
-    }
-
-    /* 3. Footer Reset */
-    .neo-footer {
-        text-align: center; /* Paksa teks ke tengah di HP */
-    }
-
-    .footer-brand-box {
-        display: block;
-        margin: 0 auto;
-        width: fit-content;
-    }
-
-    .social-sticker {
-        display: inline-block;
-        margin: 5px;
-    }
-
-    /* 4. Shadow Adjustment */
-    /* Shadow terlalu tebal bikin elemen melenceng ke kanan */
-    .neo-item, .contact-card, .footer-brand-box, .gallery-item {
-        box-shadow: 5px 5px 0px #000 !important;
-        margin-left: auto;
-        margin-right: auto;
-        transform: none !important; /* Matikan rotasi miring di HP */
-    }
-
-    /* 5. Marquee Fix */
-    .marquee, .marquee-footer {
-        width: 100%;
-    }
-    
-    /* 6. Contact Card & Map */
-    .contact-card {
-        padding: 15px;
-        width: 100%;
-    }
-    
-    iframe {
-        height: 200px;
-    }
+}
+.category-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--yellow);
+    color: #000;
+    padding: 5px 15px;
+    font-weight: 900;
+    z-index: 10;
+    border: 2px solid #000;
+    transform: rotate(-2deg);
 }
