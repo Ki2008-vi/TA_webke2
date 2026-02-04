@@ -492,116 +492,326 @@ body {
 .social-sticker-icon:hover .fa-facebook-f { color: #1877F2; }
 .social-sticker-icon:hover .fa-whatsapp { color: #25D366; }
 
+/* ========================================
+   RESPONSIVE MOBILE OPTIMIZATION
+   ======================================== */
+
 @media (max-width: 768px) {
-    /* NAVBAR: Memastikan konten di tengah */
-    .navbar .container {
-        display: flex;
-        justify-content: center; /* Paksa konten navbar ke tengah */
-        align-items: center;
+    /* 1. Reset Global agar tidak ada scroll kanan-kiri */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
     }
 
-    /* Memastikan tombol menu dan brand sejajar */
-    .navbar-brand {
-        margin-right: 0 !important;
-        margin-left: auto;
-        margin-right: auto;
-        display: table; /* Trik agar margin auto bekerja pada elemen inline-block */
-    }
     /* 2. Hero Section - Perampingan Teks */
-   .hero {
-        text-align: center !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center secara horizontal */
-        justify-content: center; /* Center secara vertikal */
-        padding-left: 15px;
-        padding-right: 15px;
+    .hero {
+        padding: 100px 15px 50px 15px;
+        height: auto;
+        min-height: 80vh;
+        text-align: center;
     }
 
     .hero h1 {
-        width: 100%;
-        text-align: center !important;
-        margin-left: 0;
-        margin-right: 0;
+        font-size: 3.5rem !important;
+        letter-spacing: -2px;
+        line-height: 1;
+        margin-bottom: 20px;
     }
 
     .hero p {
-        margin-left: auto;
-        margin-right: auto;
+        font-size: 1.1rem !important;
+        padding: 0 10px;
     }
 
-    /* Tombol Lihat Katalog (D-Flex Button Container) */
-    .hero .d-flex {
-        justify-content: center !important; /* Paksa tombol ke tengah */
-        width: 100%;
-        flex-direction: column; /* Tombol tumpuk di HP agar rapi */
-        gap: 15px !important;
-        align-items: center;
+    /* 3. Navbar Mobile Optimization */
+    .navbar {
+        padding: 10px 0;
     }
 
-    .hero .btn {
-        width: 80%; /* Tombol lebih lebar di HP agar mudah diklik */
-        margin: 0 auto;
+    .navbar.scrolled {
+        width: 98%;
+        margin: 10px auto;
+        box-shadow: 6px 6px 0px var(--text);
     }
 
-    /* 3. Bento Box (Services) - Jadi 1 Kolom Sempurna */
-    .service-card {
-        padding: 25px;
-        margin-bottom: 10px;
-        box-shadow: 8px 8px 0px var(--text); /* Shadow dikecilkan agar tidak makan ruang */
-    }
-
-    /* 4. Gallery Polaroid - Menghilangkan rotasi ekstrim di HP */
-    .gallery-item {
-        transform: rotate(0deg) !important; /* Paksa tegak agar simetris di layar kecil */
-        margin-bottom: 30px;
-        padding: 10px 10px 45px 10px;
-    }
-
-    .gallery-item:hover {
-        transform: scale(1.02) !important; /* Hover di HP jangan terlalu besar */
-    }
-
-    /* 5. Navbar Mobile - Tetap Bold */
     .navbar-brand {
         font-size: 1.5rem;
         letter-spacing: -1px;
+        padding: 5px 10px;
     }
 
     .navbar-toggler {
         border: 3px solid #000 !important;
         border-radius: 0;
         background: var(--pink);
+        padding: 8px 12px;
     }
 
-    /* 6. Marquee - Kecepatan disesuaikan */
-    .marquee-footer span {
-        font-size: 1.1rem;
-        animation-duration: 10s; /* Lebih cepat di HP agar teks terbaca terus */
+    .navbar-collapse {
+        background: var(--yellow);
+        margin-top: 15px;
+        padding: 15px;
+        border: 3px solid #000;
     }
 
-    /* 7. Footer - Perataan Tengah */
-    .neo-footer {
+    .nav-link {
+        padding: 12px 15px !important;
+        margin-bottom: 8px;
+        border: 2px solid #000;
+        background: white;
         text-align: center;
     }
 
+    .nav-item .btn-warning {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* 4. Marquee Mobile */
+    .marquee {
+        padding: 8px 0;
+        font-size: 0.9rem;
+    }
+
+    .marquee span {
+        animation-duration: 15s;
+    }
+
+    .marquee-footer span {
+        font-size: 1.1rem;
+        animation-duration: 10s;
+    }
+
+    /* 5. Service Cards - Full Width Stack */
+    .service-card {
+        padding: 25px;
+        margin-bottom: 15px;
+        box-shadow: 8px 8px 0px var(--text);
+    }
+
+    .service-card i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+
+    /* 6. Gallery Polaroid Mobile Fix */
+    .gallery-container {
+        padding: 50px 15px;
+    }
+
+    .gallery-item {
+        transform: rotate(0deg) !important;
+        margin-bottom: 25px;
+        padding: 10px 10px 45px 10px;
+        box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 10px 10px 0px var(--green);
+    }
+
+    .gallery-item img {
+        height: 250px;
+    }
+
+    .gallery-overlay h5 {
+        font-size: 1.2rem;
+    }
+
+    .gallery-overlay p {
+        font-size: 0.9rem;
+    }
+
+    /* 7. Pricing Cards Mobile */
+    .package-card {
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 8px 8px 0px var(--text);
+    }
+
+    .package-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .package-card h2 {
+        font-size: 2.5rem;
+    }
+
+    .best-seller {
+        transform: rotate(0deg);
+    }
+
+    /* 8. FAQ Accordion Mobile */
+    .neo-item {
+        margin-bottom: 15px !important;
+        box-shadow: 6px 6px 0px #000;
+    }
+
+    .neo-btn {
+        font-size: 1rem !important;
+        padding: 18px !important;
+        text-align: left;
+    }
+
+    .faq-number {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+        margin-right: 10px;
+    }
+
+    .neo-body {
+        padding: 20px !important;
+        font-size: 1rem;
+    }
+
+    /* 9. Footer Mobile Optimization */
+    .neo-footer {
+        text-align: center;
+        padding: 30px 15px;
+    }
+
     .footer-brand-box {
+        margin-bottom: 25px;
+        box-shadow: 5px 5px 0px #000;
+    }
+
+    .footer-label {
+        font-size: 0.9rem;
         margin-bottom: 20px;
     }
 
     .contact-card {
         box-shadow: 6px 6px 0px var(--text);
-        padding: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
     }
 
-    /* 8. WA Sticky - Ukuran lebih kecil agar tidak menutupi konten */
+    .map-wrapper iframe {
+        height: 250px;
+    }
+
+    /* 10. Social Media Icons Mobile */
+    .social-sticker {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+
+    .social-sticker-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        margin: 5px;
+    }
+
+    /* 11. Bento Gallery Footer */
+    .bento-img {
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    /* 12. WA Sticky Button Mobile */
     .wa-sticky {
-        bottom: 20px;
-        right: 20px;
-        padding: 10px 20px;
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+        padding: 12px 20px;
         font-size: 1rem;
-        width: calc(100% - 40px); /* Melebar di bawah (Optional) */
         text-align: center;
+        box-shadow: 6px 6px 0px var(--text);
+        width: auto;
+    }
+
+    .wa-sticky:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0px var(--text);
+    }
+
+    /* 13. Category Tag Mobile */
+    .category-tag {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+
+    /* 14. Section Spacing Mobile */
+    section {
+        padding: 50px 15px !important;
+    }
+
+    /* 15. Container Padding Override */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* 16. Typography Mobile */
+    h1 { font-size: 2.5rem !important; }
+    h2 { font-size: 2rem !important; }
+    h3 { font-size: 1.5rem !important; }
+    h4 { font-size: 1.3rem !important; }
+    h5 { font-size: 1.1rem !important; }
+    
+    p, li, span {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* 17. Button Mobile */
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    /* 18. Prevent Horizontal Overflow */
+    * {
+        max-width: 100%;
+    }
+
+    img {
+        height: auto;
+    }
+}
+
+/* Extra Small Devices (< 576px) */
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2.8rem !important;
+        letter-spacing: -1px;
+    }
+
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+
+    .package-card {
+        padding: 20px;
+    }
+
+    .wa-sticky {
+        font-size: 0.95rem;
+        padding: 10px 15px;
+    }
+}
+
+/* Landscape Mode Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 60vh;
+        padding: 80px 15px 40px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem !important;
     }
 }
 .category-tag {
